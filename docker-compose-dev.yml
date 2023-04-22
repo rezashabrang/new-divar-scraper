@@ -1,0 +1,37 @@
+# Copyright(c) 2022 aasaam software development group
+version: "3"
+
+services:
+  house-watcher:
+    build:
+      dockerfile: Dockerfile
+      context: .
+    image: house-watcher
+    container_name: house-watcher
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - .:/app/
+    depends_on:
+      - house-watcher-mysqldb
+
+  house-watcher-mysqldb:
+    image: mysql:8.0.31
+    container_name: house-watcher-mysqldb
+    restart: always
+    env_file:
+      - .env
+    volumes:
+      - house-vol:/var/lib/mysql
+    ports:
+      - 7000:3306
+
+  house-watcher-adminer:
+    image: adminer:4.8.1-standalone
+    container_name: house-watcher-adminer
+    ports:
+      - 7001:8080
+
+volumes:
+  house-vol:
