@@ -32,6 +32,9 @@ classifiers = [  #! Update me
 
 [tool.poetry.dependencies]
 python = "^3.8"
+beautifulsoup4 = "^4.12.2"
+sqlalchemy = "^2.0.10"
+telethon = "^1.28.5"
 
 [tool.poetry.dev-dependencies]
 bandit = "^1.7.1"
