@@ -1,7 +1,7 @@
 """Tests for hello function."""
 import pytest
 
-from new_divar_scraper.example import hello
+from new_divar_scraper.main import hello
 
 
 @pytest.mark.parametrize(

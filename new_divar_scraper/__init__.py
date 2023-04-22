@@ -1,7 +1,10 @@
 # type: ignore[attr-defined]
 """Scraper for divar with notifications for gmail & telegram."""
 
+import os
 import sys
+
+sys.path.append(os.path.dirname(os.path.realpath(__file__)))
 
 if sys.version_info >= (3, 8):
     from importlib import metadata as importlib_metadata
