@@ -20,4 +20,4 @@ def extract_deposit_price(deposit_text: str):
 
 
 def extract_region(region_name: str):
-    return region_name.split(" در ")[1]
+    return region_name.split("در ")[1]

@@ -18,6 +18,7 @@ def fetch_url_data(url):
     items = htmls.select(".post-card-item-af972")
 
     items_metadata = []
+    # Fetching each card item metadata
     for item in items:
         href = build_href(item.find_all("a")[0].get("href"))
 
@@ -38,4 +39,4 @@ def fetch_url_data(url):
 
         items_metadata.append(item_meta)
 
-        break
+    return items_metadata
