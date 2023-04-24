@@ -5,6 +5,7 @@ from .db import filter_new_items, initialize_mysql
 from .divar.scraper import fetch_url_data
 from .logger import LOGGER
 from .tools import zzz
+from .notif.telegram import send_item as telegram
 
 LOGGER.info(f"Starting divar scraper for project '{os.getenv('PROJECT_NAME')}'.")
 
@@ -22,7 +23,9 @@ while True:
     new_items = filter_new_items(items_data)
 
     # Send notification for new ones on Gmail and Telegram
-    # TODO Telegram notification function
+    LOGGER.info("Sending new items.")
+    for item in new_items:
+        telegram(item)
     # TODO Gmail notification function
 
     # Sleep
