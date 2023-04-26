@@ -1,14 +1,15 @@
-from telethon import TelegramClient, sync
-from ..logger import LOGGER
 import os
 
+from telethon import TelegramClient, sync
 
-TEL_API_ID = int(os.getenv('TEL_API_ID'))
-TEL_API_HASH = os.getenv('TEL_API_HASH')
-TEL_BOT_TOKEN = os.getenv('TEL_BOT_TOKEN')
-ASM_PROXY_ADDRESS = os.getenv('ASM_PROXY_ADDRESS')
-ASM_PROXY_PORT = int(os.getenv('ASM_PROXY_PORT'))
-USERNAME = os.getenv('USERNAME')
+from ..logger import LOGGER
+
+TEL_API_ID = int(os.getenv("TEL_API_ID"))
+TEL_API_HASH = os.getenv("TEL_API_HASH")
+TEL_BOT_TOKEN = os.getenv("TEL_BOT_TOKEN")
+ASM_PROXY_ADDRESS = os.getenv("ASM_PROXY_ADDRESS")
+ASM_PROXY_PORT = int(os.getenv("ASM_PROXY_PORT"))
+USERNAME = os.getenv("USERNAME")
 
 
 def construct_message(metadata):
@@ -22,6 +23,7 @@ def construct_message(metadata):
 \U0001F517 {metadata['href']}
     """
 
+
 def send_item(item_data):
     try:
         # Constructing message
@@ -29,14 +31,14 @@ def send_item(item_data):
 
         # Intantiating Telegram Client
         client = TelegramClient(
-            'health_messenger',
+            "health_messenger",
             TEL_API_ID,
             TEL_API_HASH,
             proxy=(
                 "socks5",
                 ASM_PROXY_ADDRESS,
                 ASM_PROXY_PORT,
-            )
+            ),
         ).start(bot_token=TEL_BOT_TOKEN)
 
         # Sending messages
@@ -47,9 +49,4 @@ def send_item(item_data):
 
     except Exception as err:
 
-        LOGGER.error(
-            f"Failed sending telegram message.",
-            exc_info=err
-        )
-    
-
+        LOGGER.error(f"Failed sending telegram message.", exc_info=err)

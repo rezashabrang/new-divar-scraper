@@ -4,8 +4,8 @@ import os
 from .db import filter_new_items, initialize_mysql
 from .divar.scraper import fetch_url_data
 from .logger import LOGGER
-from .tools import zzz
 from .notif.telegram import send_item as telegram
+from .tools import zzz
 
 LOGGER.info(f"Starting divar scraper for project '{os.getenv('PROJECT_NAME')}'.")
 
