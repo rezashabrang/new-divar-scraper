@@ -72,5 +72,6 @@ def filter_new_items(items):
                 )
                 conn.execute(ins_query)
                 conn.commit()
-                new_items.append(item)
+                if item["rent"] != "رهن کامل":
+                    new_items.append(item)
     return new_items
